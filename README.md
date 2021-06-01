@@ -30,3 +30,10 @@ chmod +x uefi.sh
 
 sudo ./archinstall/uefi.sh
 
+before reboot after uefi
+
+
+vim /etc/mkinitcpio.conf
+modules add (amdgpu nvidia) - as applicable
+mkinitcpi -p linux
+
