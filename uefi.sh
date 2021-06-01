@@ -32,7 +32,6 @@ systemctl enable firewalld
 systemctl enable acpid
 
 useradd -mG wheel jay
-useradd -m jay
 echo jay:password | chpasswd
 usermod -aG libvirt jay
 
