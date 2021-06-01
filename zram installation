@@ -1,0 +1,15 @@
+# after UEFI install and after log-in. Install zram
+# download paru
+git clone https://aur.archlinux.org/paru-bin
+cd paru-bin
+makepkg -si
+
+paru zramd
+
+#after install edit /etc/default/zramd and set ram size wanted
+
+sudo systemctl enable --now zramd.service
+
+#lsblk to check if zram is present
+
+after which install DE
