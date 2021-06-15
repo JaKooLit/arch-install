@@ -15,8 +15,10 @@ sudo firewall-cmd --reload
 #sudo systemctl enable --now auto-cpufreq
 #systemctl start auto-cpufreq
 
-sudo pacman -S xorg lightdm lightdm-gtk-greeter budgie-desktop nautilus xdg-user-dirs-gtk alacritty gnome-control-center noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox vlc powerline-fonts 
-paru -S --noconfirm gnome-screensaver
+sudo pacman -S xorg lightdm lightdm-gtk-greeter budgie-desktop nautilus xdg-user-dirs-gtk alacritty noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox vlc powerline-fonts 
+#paru -S --noconfirm gnome-screensaver
+paru -S --noconfirm gnome-control-center-nocheese
+
 sudo systemctl enable lightdm
 
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
