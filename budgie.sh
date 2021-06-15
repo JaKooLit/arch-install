@@ -15,7 +15,7 @@ sudo firewall-cmd --reload
 #sudo systemctl enable --now auto-cpufreq
 #systemctl start auto-cpufreq
 
-sudo pacman -S xorg lightdm lightdm-gtk-greeter budgie-desktop nautilus xdg-user-dirs-gtk alacritty noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox vlc powerline-fonts 
+sudo pacman -S xorg lightdm lightdm-gtk-greeter budgie-desktop nautilus xdg-user-dirs-gtk alacritty noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox vlc powerline-fonts papirus-icon-theme 
 #paru -S --noconfirm gnome-screensaver
 paru -S --noconfirm gnome-control-center-nocheese
 
