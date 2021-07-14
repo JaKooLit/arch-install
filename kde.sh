@@ -15,7 +15,7 @@ sudo firewall-cmd --reload
 #sudo systemctl enable --now auto-cpufreq
 #systemctl start auto-cpufreq
 
-sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 xdg-desktop-portal-kde kinfocenter xdg-desktop-portal-kde plasma-wayland-session 
+sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 xdg-desktop-portal-kde kinfocenter xdg-desktop-portal-kde plasma-wayland-session ksystemlog 
 
 sudo systemctl enable sddm
 
