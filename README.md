@@ -28,7 +28,7 @@ install uefi.sh - from the file
 
 chmod +x uefi.sh
 
-sudo ./archinstall/uefi.sh
+sudo ./archin-stall/uefi.sh
 
 before reboot after uefi
 
