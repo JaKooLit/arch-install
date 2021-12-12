@@ -1,4 +1,4 @@
-cheat sheet for arch installation
+cheat sheet for arch installation (UEFI)
 
 prepare your drive
 
