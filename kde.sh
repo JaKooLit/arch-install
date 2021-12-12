@@ -10,10 +10,13 @@ sudo firewall-cmd --add-port=1025-65535/tcp --permanent
 sudo firewall-cmd --add-port=1025-65535/udp --permanent
 sudo firewall-cmd --reload
 
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -si --noconfirm
 
-#paru -S --noconfirm auto-cpufreq
-#sudo systemctl enable --now auto-cpufreq
-#systemctl start auto-cpufreq
+paru -S --noconfirm auto-cpufreq
+sudo systemctl enable --now auto-cpufreq
+systemctl start auto-cpufreq
 
 sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog 
 
