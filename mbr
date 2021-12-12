@@ -17,9 +17,10 @@ pacman -S grub networkmanager network-manager-applet dialog wpa_supplicant mtool
 # pacman -S nvidia nvidia-utils nvidia-settings
 
 # additional if required
-#pacman -S tlp virt-manager qemu qemu-arch-extra edk2-ovmf vde2 bluez bluez-utils cups hplip gvfs gvfs-smb
+# pacman -S tlp virt-manager qemu qemu-arch-extra edk2-ovmf vde2 bluez bluez-utils cups hplip gvfs gvfs-smb
 
-grub-install --target=i386-pc /dev/sdX # replace sdx with your disk name, not the partition
+# replace sdx with your disk name, not the partition
+grub-install --target=i386-pc /dev/sdX 
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
@@ -35,7 +36,7 @@ systemctl enable libvirtd
 systemctl enable firewalld
 systemctl enable acpid
 
-useradd -mG wheel jay
+useradd -mG wheel saeron
 echo saeron:password | chpasswd
 # usermod -aG libvirt jay
 
