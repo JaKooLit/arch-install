@@ -1,4 +1,3 @@
-#!/bin/bash
 
 ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 hwclock --systohc
@@ -11,7 +10,12 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 Arch.localdomain Arch" >> /etc/hosts
 echo root:password | chpasswd
 
-pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools base-devel avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups alsa-utils pulseeffects pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion openssh rsync reflector acpi acpi_call virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font linux-headers linux-zen linux-zen-headers
+pacman -S grub  efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools  avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils alsa-utils easyeffects pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion openssh rsync reflector acpi acpi_call  bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font linux-headers linux-zen linux-zen-headers
+
+
+# extra utils
+
+# pacman -S grub-btrfs base-devel bluez bluez-utils cups virt-manager qemu qemu-arch-extra edk2-ovmf
 
 # pacman -S xf86-video-amdgpu 
 # pacman -S nvidia nvidia-utils nvidia-settings
@@ -39,3 +43,4 @@ echo "jay ALL=(ALL) ALL" >> /etc/sudoers.d/jay
 
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
+
