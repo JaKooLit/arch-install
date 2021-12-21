@@ -10,14 +10,16 @@ sudo firewall-cmd --add-port=1025-65535/tcp --permanent
 sudo firewall-cmd --add-port=1025-65535/udp --permanent
 sudo firewall-cmd --reload
 
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si --noconfirm
+#cant perform makepkg for root
+#git clone https://aur.archlinux.org/paru-bin.git
+#cd paru-bin
+#makepkg -si --noconfirm
 
-paru -S --noconfirm auto-cpufreq
-sudo systemctl enable --now auto-cpufreq
-systemctl start auto-cpufreq
+#paru -S --noconfirm auto-cpufreq
+#sudo systemctl enable --now auto-cpufreq
+#systemctl start auto-cpufreq
 
+#edit the packages as required
 sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog 
 
 #wayland
@@ -28,5 +30,5 @@ sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-ha
 sudo systemctl enable sddm
 
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
-sleep 5
-#reboot
+#sleep 5
+reboot
