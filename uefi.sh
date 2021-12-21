@@ -15,7 +15,7 @@ pacman -S grub  efibootmgr networkmanager network-manager-applet dialog wpa_supp
 
 # extra utils
 
-# pacman -S grub-btrfs base-devel bluez bluez-utils cups virt-manager qemu qemu-arch-extra edk2-ovmf
+pacman -S grub-btrfs base-devel bluez bluez-utils cups virt-manager qemu qemu-arch-extra edk2-ovmf
 
 # pacman -S xf86-video-amdgpu 
 # pacman -S nvidia nvidia-utils nvidia-settings
@@ -28,7 +28,7 @@ systemctl enable bluetooth
 systemctl enable cups.service
 systemctl enable sshd
 systemctl enable avahi-daemon
-#systemctl enable tlp # You can uncomment this command out if you install tlp
+#systemctl enable tlp #uncomment command out if you install tlp
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable libvirtd
