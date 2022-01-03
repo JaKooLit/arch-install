@@ -38,9 +38,9 @@ systemctl enable acpid
 
 useradd -mG wheel saeron
 echo saeron:password | chpasswd
-# usermod -aG libvirt jay
+# usermod -aG libvirt saeron
 
-echo "saeron ALL=(ALL) ALL" >> /etc/sudoers.d/jay
+echo "saeron ALL=(ALL) ALL" >> /etc/sudoers.d/saeron
 
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
