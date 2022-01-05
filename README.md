@@ -18,14 +18,27 @@ btrfs subvolume create @
 
 btrfs subvolume create @home
 
+btrfs subvolume create @data
+
+btrfs subvolume create @opt
+
+btrfs subvolume create @var
+
 cd
 
 umount /mnt
 
-mount -o noatime,compress=zstd:5,space_cache,discard=async,subvol=@ /dev/root /mnt
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/root /mnt
 
-mkdir /mnt/{boot,home}
-mount -o noatime,compress=zstd:5.space_cache,discard=async,subvol=@home /dev/root /mnt/home
+mkdir /mnt/{boot,home,var,opt,data}
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@home /dev/root /mnt/home
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@data /dev/root /mnt/data
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@opt /dev/root /mnt/opt
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@var /dev/root /mnt/var
 
 mount /dev/boot(drive) /mnt/boot
 
