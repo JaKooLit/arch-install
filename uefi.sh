@@ -17,6 +17,14 @@ pacman -S grub  efibootmgr networkmanager network-manager-applet dialog wpa_supp
 
 pacman -S grub-btrfs base-devel bluez bluez-utils cups virt-manager qemu qemu-arch-extra edk2-ovmf
 
+# if installing on qemu /kvm
+
+pacman -S qemu-guest-agent spice-vdagent xf86-video-qxl
+
+# zram-generator
+
+pacman -S zram-generator
+
 # pacman -S xf86-video-amdgpu 
 # pacman -S nvidia nvidia-utils nvidia-settings
 
