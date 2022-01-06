@@ -20,7 +20,7 @@ sudo firewall-cmd --reload
 #systemctl start auto-cpufreq
 
 #edit the packages as required
-sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog 
+sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight
 
 #wayland
 # sudo pacman -S xdg-desktop-portal-kde  xdg-desktop-portal-kde plasma-wayland-session 
