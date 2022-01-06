@@ -24,6 +24,8 @@ btrfs subvolume create @opt
 
 btrfs subvolume create @var
 
+btfs subvolume create @tmp
+
 cd
 
 umount /mnt
@@ -39,6 +41,8 @@ mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@data /dev/
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@opt /dev/root /mnt/opt
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@var /dev/root /mnt/var
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@tmp /dev/root /mnt/tmp
 
 mount /dev/boot(drive) /mnt/boot
 
@@ -63,16 +67,27 @@ modules add (btrfs amdgpu nvidia) - as applicable
 
 mkinitcpio -P
 
-
+reflector: (for reflector timer)
+/etc/xdg/reflector
+--save /etc/pacman.d/mirrorlist
+--protocol https
+--country KR,HK,TW,SG,JP
+--latest 6
+--sort rate
 
 zram:
 
 After installing zram-generator package, configure how much zram you need / want
 see https://github.com/systemd/zram-generator
 basically
-# /etc/systemd/zram-generator.conf
+
+add conf file to
+
+ /etc/systemd/zram-generator.conf
 [zram0]
 zram-size = ram / 2
+
+
 
 
 
