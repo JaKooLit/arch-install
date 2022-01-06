@@ -63,3 +63,17 @@ modules add (btrfs amdgpu nvidia) - as applicable
 
 mkinitcpio -P
 
+
+
+zram:
+
+After installing zram-generator package, configure how much zram you need / want
+see https://github.com/systemd/zram-generator
+basically
+# /etc/systemd/zram-generator.conf
+[zram0]
+zram-size = ram / 2
+
+
+
+
