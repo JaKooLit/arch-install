@@ -68,7 +68,8 @@ modules add (btrfs amdgpu nvidia) - as applicable
 mkinitcpio -P
 
 reflector: (for reflector timer)
-/etc/xdg/reflector
+/etc/xdg/reflector/reflector.conf
+
 --save /etc/pacman.d/mirrorlist
 --protocol https
 --country KR,HK,TW,SG,JP
