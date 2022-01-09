@@ -17,6 +17,8 @@ sudo firewall-cmd --reload
 
 sudo pacman -S xorg deepin deepin-extra lightdm noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox spectacle vlc powerline powerline-fonts neofetch deepin-session-shell
 
+#deepin packages
+sudo pacman -S deepin-anything-arch deepin-calculator deepin-dock deepin-scree-recorder deepin-polkit-agent deepin-file-manager deepin-desktop-schemas deepin-session-ui deepin-session-shell deepin-system-monitor deepin-network-utils deepin-launcher deepin-album deepin-qt5platform-plugins startdde deepin-music deepin-terminal deepin-kwin deepin-icon-theme deepin-anything-dkms
 
 sudo systemctl enable lightdm.service
 
