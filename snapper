@@ -1,0 +1,21 @@
+umount /.snapshots/
+
+rm -rf /.snapshots/
+
+snapper -c root create-config /
+
+vim /etc/snapper/configs/root - allow users and configure clean up times
+
+chmod a+rx /.snapshots/
+
+systemctl start snapper-timeline.timer
+
+systemctl enable snapper-timeline.timer
+
+systemctl enable snapper-cleanup.timer
+
+systemctl start snapper-cleanup.timer
+
+systemctl start grub-btrfs.path
+
+systemctl enable grub-btrfs.path
