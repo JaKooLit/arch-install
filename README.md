@@ -46,7 +46,7 @@ mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@tmp /dev/r
 
 mount /dev/boot(drive) /mnt/boot
 
-pacstrap /mnt base linux linux-firmware git vim amd-ucode/intel-ucode btrfs-progs
+pacstrap /mnt base linux linux-firmware linux-firmware-whence git vim amd-ucode/intel-ucode btrfs-progs
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
