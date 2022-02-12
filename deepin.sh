@@ -15,12 +15,12 @@ sudo firewall-cmd --reload
 #sudo systemctl enable --now auto-cpufreq
 #systemctl start auto-cpufreq
 
-sudo pacman -S xorg deepin deepin-extra lightdm noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox spectacle vlc powerline powerline-fonts neofetch deepin-session-shell
+sudo pacman -S xorg deepin sddm noto-fonts ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk firefox spectacle vlc powerline powerline-fonts neofetch deepin-session-shell
 
 #deepin packages
-sudo pacman -S deepin-anything-arch deepin-calculator deepin-dock deepin-scree-recorder deepin-polkit-agent deepin-file-manager deepin-desktop-schemas deepin-session-ui deepin-session-shell deepin-system-monitor deepin-network-utils deepin-launcher deepin-album deepin-qt5platform-plugins startdde deepin-music deepin-terminal deepin-kwin deepin-icon-theme deepin-anything-dkms
+sudo pacman -S deepin-anything-arch deepin-desktop-schemas deepin-terminal deepin-dock deepin-launcher deepin-qt5platform-plugins deepin-font-manager deepin-session-ui deepin-icon-theme deepin-pw-check
 
-sudo systemctl enable lightdm.service
+sudo systemctl enable sddm.service
 
 /bin/echo -e "\e[1;32mREBOOTING IN 5..4..3..2..1..\e[0m"
 #sleep 5
