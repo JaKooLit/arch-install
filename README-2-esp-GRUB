@@ -1,0 +1,21 @@
+This is useful when you are dual booting and cant expand your boot partition.
+
+as per Arch wiki:
+
+https://wiki.archlinux.org/title/GRUB/Tips_and_tricks
+
+
+Alternative install method
+
+
+Usually, GRUB keeps all files, including configuration files, in /boot, regardless of where the EFI System Partition is mounted.
+
+If you want to keep these files inside the EFI System Partition itself, add --boot-directory=esp to the grub-install command:
+
+# grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=grub --boot-directory=esp --debug
+
+This puts all GRUB files in esp/grub, instead of in /boot/grub. When using this method, make sure you have grub-mkconfig put the configuration file in the same place:
+
+# grub-mkconfig -o esp/grub/grub.cfg
+
+Configuration is otherwise the same. 
