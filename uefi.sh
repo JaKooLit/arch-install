@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "ParallelDownloads = 10" /etc/pacman.conf
+echo "ILoveCandy" >> /etc/pacman.conf
+echor "Color" >> /etc/pacman.conf
+reflector -c KR -a 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
 ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 hwclock --systohc
 sed -i '177s/.//' /etc/locale.gen
@@ -9,7 +14,9 @@ echo "Arch" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 Arch.localdomain Arch" >> /etc/hosts
-echo root:password | chpasswd
+
+#remember to change the password here default is 1
+echo root:1 | chpasswd
 
 pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs \
 gvfs-smb nfs-utils inetutils dnsutils alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion rsync reflector acpi \
@@ -56,7 +63,9 @@ systemctl enable acpid
 systemctl enable qemu-guest-agent #uncomment if installed qemu-guest-agent
 
 useradd -mG wheel jay
-echo jay:password | chpasswd
+
+#
+echo jay:1 | chpasswd
 #usermod -aG libvirt jay
 
 echo "jay ALL=(ALL) ALL" >> /etc/sudoers.d/jay
