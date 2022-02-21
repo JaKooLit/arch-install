@@ -19,9 +19,9 @@ echo "127.0.1.1 Arch.localdomain Arch" >> /etc/hosts
 echo root:1 | chpasswd
 
 pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs
-sudo pacman -S gvfs-smb nfs-utils inetutils dnsutils alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion rsync reflector acpi 
-sudo pacman -S acpi_call  bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font 
-sudo pacman -S linux-headers pipewire-x11-bell realtime-privileges
+pacman -S gvfs-smb nfs-utils inetutils dnsutils alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion rsync reflector acpi 
+pacman -S acpi_call  bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font 
+pacman -S linux-headers pipewire-x11-bell realtime-privileges
 
 # easyeffects from repo install alot of plugin so either that or easyeffects-git (From AUR)
 
