@@ -1,9 +1,7 @@
 #!/bin/bash
 
-echo "ParallelDownloads = 10" /etc/pacman.conf
-echo "ILoveCandy" >> /etc/pacman.conf
-echor "Color" >> /etc/pacman.conf
 reflector -c KR -a 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Sy
 
 ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 hwclock --systohc
@@ -62,9 +60,11 @@ systemctl enable firewalld
 systemctl enable acpid
 systemctl enable qemu-guest-agent #uncomment if installed qemu-guest-agent
 
+
+#change user name default is jay
 useradd -mG wheel jay
 
-#
+#change the password. default is one
 echo jay:1 | chpasswd
 #usermod -aG libvirt jay
 
