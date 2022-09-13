@@ -15,7 +15,7 @@ sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 kwallet-pam noto-
 
 sudo pacman -S adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin
 
-sudo pacman -S dolphin-plugins powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight
+sudo pacman -S dolphin-plugins powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight plasma-pa
 
 #wayland
 # sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kvantum
