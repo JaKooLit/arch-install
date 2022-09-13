@@ -18,31 +18,30 @@ btrfs subvolume create @
 
 btrfs subvolume create @home
 
-btrfs subvolume create @data
-
 btrfs subvolume create @opt
 
 btrfs subvolume create @var
 
 btfs subvolume create @tmp
 
+btrfs su cr @snapshots - for snapper
 cd
 
 umount /mnt
 
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/root /mnt
 
-mkdir /mnt/{boot,home,var,opt,data}
+mkdir /mnt/{boot,home,var,opt,data,.snapshots}
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@home /dev/root /mnt/home
-
-mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@data /dev/root /mnt/data
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@opt /dev/root /mnt/opt
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@var /dev/root /mnt/var
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@tmp /dev/root /mnt/tmp
+
+mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@snapshots /dev/root /mnt/.snapshots
 
 mount /dev/boot(drive) /mnt/boot
 
