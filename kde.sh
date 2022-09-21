@@ -20,6 +20,8 @@ sudo pacman -S dolphin-plugins powerline-fonts discover sddm-kcm print-manager k
 #wayland
 # sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kvantum
 
+#plasma-beta or plasma 5.26?
+sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kpipewire plasma-workspace-wallpapers plasma-integration plasma-disks kwrited kde-gtk-config polkit-kde-agent kactivitymanagerd breeze breeze-grub breeze-gtk
 #additional if required
 
 sudo systemctl enable sddm
