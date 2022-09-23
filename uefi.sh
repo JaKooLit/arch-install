@@ -18,10 +18,12 @@ echo "127.0.1.1 Arch.localdomain Arch" >> /etc/hosts
 echo root:1 | chpasswd
 
 pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs
-pacman -S gvfs-smb nfs-utils inetutils dnsutils alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion rsync reflector acpi 
-pacman -S acpi_call  bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font 
-pacman -S linux-headers pipewire-x11-bell realtime-privileges
+pacman -S gvfs-smb nfs-utils inetutils dnsutils alsa-utils bash-completion rsync reflector acpi openssh
+pacman -S acpi_call bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft firewalld sof-firmware nss-mdns acpid ntfs-3g terminus-font 
+pacman -S linux-headers  
 
+#pipewire
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-x11-bell realtime-privileges wireplumber 
 # easyeffects from repo install alot of plugin so either that or easyeffects-git (From AUR)
 
 #pacman -S easyeffects openssh
@@ -36,7 +38,7 @@ pacman -S linux-headers pipewire-x11-bell realtime-privileges
 
 # if installing on qemu /kvm
 
-pacman -S qemu-guest-agent spice-vdagent xf86-video-qxl
+#pacman -S qemu-guest-agent spice-vdagent xf86-video-qxl
 
 # zram-generator
 
