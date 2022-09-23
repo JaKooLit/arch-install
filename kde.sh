@@ -10,18 +10,27 @@ sudo firewall-cmd --add-port=1025-65535/tcp --permanent
 sudo firewall-cmd --add-port=1025-65535/udp --permanent
 sudo firewall-cmd --reload
 
-#edit the packages as required
-sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 kwallet-pam noto-fonts ark ttf-hack adobe-source-han-sans-otc-fonts
 
-sudo pacman -S adobe-source-han-serif-otc-fonts noto-fonts-cjk powerdevil plasma-nm bluedevil firefox spectacle gwenview vlc kate dolphin
+sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 kwallet-pam ark powerdevil plasma-nm bluedevil firefox spectacle 
 
-sudo pacman -S dolphin-plugins powerline-fonts discover sddm-kcm print-manager khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight plasma-pa
+sudo pacman -S gwenview vlc kate dolphin bluez bluez-utils
+
+sudo pacman -S dolphin-plugins discover sddm-kcm khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight plasma-pa
+
+#fonts
+
+sudo pacman -S ttf-font-awesome otf-font-awesome ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerline-fonts noto-fonts
 
 #wayland
-# sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kvantum
+sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session
+
+#extras
+
+sudo pacman -S print-manager
+#edit the packages as required
 
 #plasma-beta or plasma 5.26?
-sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kpipewire plasma-workspace-wallpapers plasma-integration plasma-disks kwrited kde-gtk-config polkit-kde-agent kactivitymanagerd breeze breeze-grub breeze-gtk
+#sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kpipewire plasma-workspace-wallpapers plasma-integration plasma-disks kwrited kde-gtk-config polkit-kde-agent kactivitymanagerd breeze breeze-grub breeze-gtk
 #additional if required
 
 sudo systemctl enable sddm
