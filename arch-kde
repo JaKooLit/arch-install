@@ -124,3 +124,7 @@ echo ja:1 | chpasswd
 #usermod -aG libvirt ja
 
 echo "ja ALL=(ALL) ALL" >> /etc/sudoers.d/ja
+
+
+
+printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
