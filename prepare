@@ -21,6 +21,7 @@ btrfs su cr @var
 btrfs su cr @opt
 btrfs su cr @snapshots
 
+cd
 umount /mnt
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/vda4 /mnt
 mkdir /mnt/{boot,efi,home,var,opt,.snapshots}
