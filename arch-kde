@@ -1,0 +1,126 @@
+#!/bin/bash
+
+## WARNING! This is for /dev/vda. Edit the disk first before running this command
+
+sgdisk -n1:0:+100M -c 1:"EFI System Partition" -t 1:ef00 /dev/vda
+sgdisk -n1:0:+1G -c 1:"Boot" -t 2:8300 /dev/vda
+sgdisk -n2:0:+2G -c 2:"Swap Partition" -t 3:8200 /dev/vda
+sgdisk -n3:0:0 -c 3:"Linux /" -t 4:8300 /dev/vda
+
+
+mkfs.vfat -F 32 /dev/vda1
+mkswap /dev/vda3
+swapon /dev/vda3
+mkfs.ext4 /dev/vda2
+mkfs.btrfs /dev/vda4
+
+mount /dev/vda4 /mnt
+cd /mnt
+btrfs su cr @
+btrfs su cr @home
+btrfs su cr @var
+btrfs su cr @opt
+btrfs su cr @snapshots
+
+umount /mnt
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/vda4 /mnt
+mkdir /mnt/{boot,efi,home,var,opt,.snapshots}
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@home /dev/vda4 /mnt/home
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@var /dev/vda4 /mnt/var
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@opt /dev/vda4 /mnt/opt
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@snapshots /dev/vda4 /mnt/.snapshots
+mount /dev/vda1 /mnt/efi
+mount /dev/vda3 /mnt/boot
+
+pacstrap /mnt base linux linux-firmware linux-firmware-whence git vim amd-ucode btrfs-progs
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+
+timedatectl set-ntp true
+hwclock --systohc
+
+reflector -c KR -a 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Sy
+
+ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "ArchLinux" >> /etc/hostname
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 ArchLinux.localdomain ArchLinux" >> /etc/hosts
+
+#remember to change the password here default is 1
+echo root:1 | chpasswd
+
+pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs
+pacman -S gvfs-smb nfs-utils inetutils dnsutils alsa-utils bash-completion rsync reflector acpi openssh
+pacman -S acpi_call bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft firewalld sof-firmware nss-mdns acpid ntfs-3g terminus-font 
+pacman -S linux-headers grub-btrfs
+#pacman -S linux-zen linux-zen-headers
+#pacman -S bluez bluez-utils cups
+
+#pipewire
+pacman -S pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-x11-bell realtime-privileges wireplumber 
+
+# easyeffects from repo install alot of plugin so either that or easyeffects-git (From AUR)
+#pacman -S easyeffects openssh
+#pacman -S linux-zen linux-zen-headers
+
+# for virt-manager
+#pacman -S virt-manager qemu qemu-arch-extra edk2-ovmf
+
+# if installing on qemu /kvm
+#pacman -S qemu-guest-agent spice-vdagent xf86-video-qxl
+
+# zram-generator
+#pacman -S zram-generator
+# pacman -S xf86-video-amdgpu 
+# pacman -S nvidia nvidia-utils nvidia-settings
+
+#kde
+pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 kwallet-pam ark powerdevil plasma-nm bluedevil firefox spectacle 
+pacman -S gwenview vlc kate dolphin dolphin-plugins discover sddm-kcm khotkeys kscreen kgamma5 kinfocenter ksystemlog filelight plasma-pa
+pacman -S ttf-font-awesome otf-font-awesome ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerline-fonts noto-fonts
+pacman -S xdg-desktop-portal-kde plasma-wayland-session
+
+#printing and bluetooth
+pacman -S print-manager bluez bluez-utils
+
+
+#remember to change the --efi-directory as needed !!!!!!!!
+
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=UEFI-Arch
+grub-mkconfig -o /boot/grub/grub.cfg
+
+systemctl enable NetworkManager
+#systemctl enable bluetooth
+#systemctl enable cups.service
+#systemctl enable sshd
+systemctl enable avahi-daemon
+#systemctl enable tlp #uncomment command out if you install tlp
+systemctl enable reflector.timer
+systemctl enable fstrim.timer
+#systemctl enable libvirtd
+systemctl enable --now firewalld
+systemctl enable acpid
+
+systemctl enable sddm
+
+systemctl enable qemu-guest-agent #uncomment if installed qemu-guest-agent
+
+firewall-cmd --add-port=1025-65535/tcp --permanent
+firewall-cmd --add-port=1025-65535/udp --permanent
+firewall-cmd --reload
+
+#change user name default is ja
+useradd -mG wheel ja
+
+#change the password. default is one
+echo ja:1 | chpasswd
+#usermod -aG libvirt ja
+
+echo "ja ALL=(ALL) ALL" >> /etc/sudoers.d/ja
