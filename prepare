@@ -2,9 +2,9 @@
 ## WARNING! This is for /dev/vda. Edit the disk first before running this command
 
 sgdisk -n1:0:+100M -c 1:"EFI System Partition" -t 1:ef00 /dev/vda
-sgdisk -n1:0:+1G -c 1:"Boot" -t 2:8300 /dev/vda
-sgdisk -n2:0:+2G -c 2:"Swap Partition" -t 3:8200 /dev/vda
-sgdisk -n3:0:0 -c 3:"Linux /" -t 4:8300 /dev/vda
+sgdisk -n1:0:+1G -c 2:"Boot" -t 2:8300 /dev/vda
+sgdisk -n2:0:+2G -c 3:"Swap Partition" -t 3:8200 /dev/vda
+sgdisk -n3:0:0 -c 4:"Linux /" -t 4:8300 /dev/vda
 
 
 mkfs.vfat -F 32 /dev/vda1
