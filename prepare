@@ -30,7 +30,7 @@ mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@var /dev/v
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@opt /dev/vda4 /mnt/opt
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@snapshots /dev/vda4 /mnt/.snapshots
 mount /dev/vda1 /mnt/efi
-mount /dev/vda3 /mnt/boot
+mount /dev/vda2 /mnt/boot
 
 pacstrap /mnt base linux linux-firmware linux-firmware-whence git vim amd-ucode btrfs-progs
 
