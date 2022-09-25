@@ -1,0 +1,38 @@
+
+## WARNING! This is for /dev/vda. Edit the disk first before running this command
+
+sgdisk -n1:0:+100M -c 1:"EFI System Partition" -t 1:ef00 /dev/vda
+sgdisk -n1:0:+1G -c 1:"Boot" -t 2:8300 /dev/vda
+sgdisk -n2:0:+2G -c 2:"Swap Partition" -t 3:8200 /dev/vda
+sgdisk -n3:0:0 -c 3:"Linux /" -t 4:8300 /dev/vda
+
+
+mkfs.vfat -F 32 /dev/vda1
+mkswap /dev/vda3
+swapon /dev/vda3
+mkfs.ext4 /dev/vda2
+mkfs.btrfs /dev/vda4
+
+mount /dev/vda4 /mnt
+cd /mnt
+btrfs su cr @
+btrfs su cr @home
+btrfs su cr @var
+btrfs su cr @opt
+btrfs su cr @snapshots
+
+umount /mnt
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/vda4 /mnt
+mkdir /mnt/{boot,efi,home,var,opt,.snapshots}
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@home /dev/vda4 /mnt/home
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@var /dev/vda4 /mnt/var
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@opt /dev/vda4 /mnt/opt
+mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@snapshots /dev/vda4 /mnt/.snapshots
+mount /dev/vda1 /mnt/efi
+mount /dev/vda3 /mnt/boot
+
+pacstrap /mnt base linux linux-firmware linux-firmware-whence git vim amd-ucode btrfs-progs
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
