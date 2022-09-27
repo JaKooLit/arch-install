@@ -14,24 +14,25 @@ mount /dev/root /mnt
 
 cd /mnt
 
-btrfs subvolume create @
+btrfs su cr @
 
-btrfs subvolume create @home
+btrfs su cr @home
 
-btrfs subvolume create @opt
+btrfs su cr @opt
 
-btrfs subvolume create @var
+btrfs su cr @var
 
-btfs subvolume create @tmp
+btrfs su cr @tmp
 
 btrfs su cr @snapshots - for snapper
+
 cd
 
 umount /mnt
 
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/root /mnt
 
-mkdir /mnt/{boot,home,var,opt,data,.snapshots}
+mkdir /mnt/{boot,home,var,opt,tmp,.snapshots}
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@home /dev/root /mnt/home
 
