@@ -11,7 +11,7 @@ sudo firewall-cmd --add-port=1025-65535/udp --permanent
 sudo firewall-cmd --reload
 
 
-sudo pacman -S xorg sddm plasma-desktop konsole packagekit-qt5 kwallet-pam ark powerdevil plasma-nm bluedevil firefox spectacle 
+sudo pacman -S sddm plasma-desktop konsole packagekit-qt5 kwallet-pam ark powerdevil plasma-nm bluedevil firefox spectacle 
 
 sudo pacman -S gwenview vlc kate dolphin bluez bluez-utils
 
