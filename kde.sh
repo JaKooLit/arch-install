@@ -19,19 +19,15 @@ sudo pacman -S dolphin-plugins discover sddm-kcm khotkeys kscreen kgamma5 kinfoc
 
 #fonts
 
-sudo pacman -S ttf-font-awesome otf-font-awesome ttf-hack adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk powerline-fonts noto-fonts
+sudo pacman -S otf-font-awesome ttf-droid otf-cascadia-code otf-fantasque-sans-mono
 
 #wayland
 sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session
 
-#extras
-
+#kde print manager
 sudo pacman -S print-manager
-#edit the packages as required
 
-#plasma-beta or plasma 5.26?
-#sudo pacman -S xdg-desktop-portal-kde plasma-wayland-session kpipewire plasma-workspace-wallpapers plasma-integration plasma-disks kwrited kde-gtk-config polkit-kde-agent kactivitymanagerd breeze breeze-grub breeze-gtk
-#additional if required
+#edit the packages as required
 
 sudo systemctl enable sddm
 
