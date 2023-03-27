@@ -6,7 +6,6 @@ pacman -Sy
 ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-#sed -i '178s/.//' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "Arch" >> /etc/hostname
@@ -17,7 +16,7 @@ echo "127.0.1.1 Arch.localdomain Arch" >> /etc/hosts
 #remember to change the password here default is 1
 echo root:1 | chpasswd
 
-pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs
+pacman -S grub base-devel efibootmgr networkmanager network-manager-applet dialog mtools dosfstools avahi xdg-user-dirs xdg-utils gvfs
 pacman -S gvfs-smb gvfs-mtp nfs-utils inetutils dnsutils alsa-utils bash-completion rsync reflector acpi openssh
 pacman -S acpi_call bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft firewalld sof-firmware nss-mdns acpid ntfs-3g terminus-font 
 pacman -S linux-headers linux-zen linux-zen-headers grub-btrfs blueman zram-generator
