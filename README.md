@@ -22,8 +22,6 @@ btrfs su cr @opt
 
 btrfs su cr @var
 
-btrfs su cr @tmp
-
 btrfs su cr @snapshots - for snapper
 
 cd
@@ -32,15 +30,13 @@ umount /mnt
 
 mount -o noatime,compress=zstd:5,space_cache=v2,discard=async,subvol=@ /dev/root /mnt
 
-mkdir /mnt/{boot,home,var,opt,tmp,.snapshots}
+mkdir /mnt/{boot,home,var,opt,.snapshots}
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@home /dev/root /mnt/home
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@opt /dev/root /mnt/opt
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@var /dev/root /mnt/var
-
-mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@tmp /dev/root /mnt/tmp
 
 mount -o noatime,compress=zstd:5.space_cache=v2,discard=async,subvol=@snapshots /dev/root /mnt/.snapshots
 
@@ -52,9 +48,14 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
 
+
+download from github
+
 install uefi.sh - from the file edit with vim or any text editor downloaded in the pacstrap installation
 
 chmod +x uefi.sh
+
+cd
 
 sudo ./archin-stall/uefi.sh
 
@@ -63,7 +64,7 @@ before reboot after uefi
 
 vim /etc/mkinitcpio.conf
 
-modules add (btrfs amdgpu nvidia) - as applicable
+modules add (btrfs amdgpu nvidia i915) - as applicable
 
 mkinitcpio -P
 
