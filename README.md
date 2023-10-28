@@ -94,7 +94,7 @@ add conf file to
 [zram0]
 zram-size = ram / 2
 
-
+test
 
 
 
